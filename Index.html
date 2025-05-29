@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Configurable Tetris</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=VT323&family=Orbitron:wght@400;700&family=Rajdhani:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Audio elements removed -->
+
+    <div id="initialScreen">
+        <h1>Neon Tetris</h1>
+        <p class="version-info">v1.1.0</p> <!-- Version Added -->
+        <div class="settings-group">
+            <label for="playerName">Player Name:</label>
+            <input type="text" id="playerName" value="Player1">
+        </div>
+
+        <div class="settings-group">
+            <label>Game Theme:</label>
+            <div class="theme-buttons">
+                <button class="theme-btn active" data-theme="modern">Modern</button> <!-- Was neon -->
+                <button class="theme-btn" data-theme="dark">Dark</button>
+                <button class="theme-btn" data-theme="retro">Retro</button>
+                <button class="theme-btn" data-theme="futuristic">Futuristic</button>
+            </div>
+        </div>
+
+        <div class="settings-group">
+            <label for="startLevel">Start Level (1-10):</label>
+            <input type="number" id="startLevel" value="1" min="1" max="10">
+        </div>
+
+        <div class="settings-group">
+            <label for="boardWidth">Board Width (blocks, 8-15):</label>
+            <input type="number" id="boardWidth" value="10" min="8" max="15">
+        </div>
+
+        <div class="settings-group">
+            <label for="boardHeight">Board Height (blocks, 15-25):</label>
+            <input type="number" id="boardHeight" value="20" min="15" max="25">
+        </div>
+        
+        <div class="settings-group">
+            <label for="blockSize">Block Size (px, 20-40):</label>
+            <input type="number" id="blockSize" value="30" min="20" max="40">
+        </div>
+        
+        <div class="initial-screen-buttons">
+            <button id="startGameFromInitialScreen">Start Game</button>
+            <button id="disclaimerCreditsButton">Disclaimer & Credits</button>
+        </div>
+
+    </div>
+
+    <div class="main-container">
+        <div class="game-container">
+            <div class="canvas-wrapper"> <canvas id="tetrisCanvas"></canvas>
+                <div id="gameOverMessage" class="game-message-overlay">
+                    <h2>GAME OVER</h2>
+                    <p>Try again!</p>
+                </div>
+            </div>
+            <div class="game-info">
+                <div>
+                    <h2>Score</h2>
+                    <p id="score">0</p>
+                </div>
+                <div>
+                    <h2>Level</h2>
+                    <p id="level">1</p>
+                </div>
+                <div>
+                    <h2>Next</h2>
+                    <canvas id="nextPieceCanvas"></canvas>
+                </div>
+                <button id="startButton">Start</button>
+                <button id="pauseButton" disabled>Pause</button>
+                <button id="backToMenuButton">Main Menu</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js"></script> <!-- Tone.js Added -->
+    <script src="main.js"></script>
+
+    <div id="disclaimerModal" class="modal-overlay">
+        <div class="modal-content">
+            <h2>Disclaimer & Credits</h2>
+            <p>This Tetris game is a project developed for learning and entertainment purposes. Version 1.1.0.</p>
+            <p>Original Tetris concept by Alexey Pajitnov.</p>
+            <p>This implementation by: Leandro</p>
+            <p>Sound effects and music are generated using Tone.js.</p>
+            <!-- Replace with actual music credit if you use a specific composition -->
+            <p>Background music inspired by classic Tetris themes.</p>
+            <button id="closeDisclaimerModalButton">Close</button>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,548 @@
+/* Estilos Generales */
+:root {
+    --body-bg: #1a1a2e;
+    --text-color: #e0e0fc;
+    --primary-accent: #ff69b4;
+    --secondary-accent: #4ecdc4;
+    --container-bg: #162447;
+    --container-border: #4ecdc4;
+    --input-bg: #0f172a;
+    --input-border: #283a66;
+    --button-bg: linear-gradient(145deg, #ff69b4, #f80759);
+    --button-text: white;
+    --button-shadow: rgba(248, 7, 89, 0.4);
+    --button-hover-shadow: rgba(248, 7, 89, 0.6);
+    --secondary-button-bg: #0f172a;
+    --secondary-button-text: #a7a7d8;
+    --secondary-button-border: #283a66;
+    --secondary-button-hover-bg: #1f4068;
+    --secondary-button-hover-text: #e0e0fc;
+    --secondary-button-hover-border: #4ecdc4;
+    --canvas-bg: #0f172a;
+    --canvas-border: #283a66;
+    --game-info-bg: #1f4068;
+    --game-info-text: #e0e0fc;
+    --score-color: #ffc107;
+    --font-primary: 'Press Start 2P', cursive;
+    --font-secondary: 'Inter', sans-serif;
+}
+
+body {
+    font-family: var(--font-secondary);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+    background-color: var(--body-bg);
+    color: var(--text-color);
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
+    transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+/* Theme: Modern (Default, but explicit for clarity) */
+body.theme-modern {
+    --body-bg: #f0f2f5; /* Light grey background */
+    --text-color: #333; /* Dark text */
+    --primary-accent: #007bff; /* Bright blue */
+    --secondary-accent: #17a2b8; /* Info blue */
+    --container-bg: #ffffff; /* White container */
+    --container-border: #dee2e6; /* Light grey border */
+    --input-bg: #f8f9fa; /* Very light grey input */
+    --input-border: #ced4da; /* Medium grey border */
+    --button-bg: linear-gradient(145deg, #007bff, #0056b3); /* Blue gradient */
+    --button-text: white;
+    --button-shadow: rgba(0, 123, 255, 0.3);
+    --button-hover-shadow: rgba(0, 123, 255, 0.5);
+    --secondary-button-bg: #6c757d; /* Grey secondary button */
+    --secondary-button-text: white;
+    --secondary-button-border: #6c757d;
+    --secondary-button-hover-bg: #5a6268;
+    --secondary-button-hover-text: white;
+    --secondary-button-hover-border: #545b62;
+    --canvas-bg: #e9ecef; /* Light canvas */
+    --canvas-border: #adb5bd; /* Grey canvas border */
+    --game-info-bg: #f8f9fa; /* Light info panel */
+    --game-info-text: #495057; /* Dark grey info text */
+    --score-color: #28a745; /* Green score */
+}
+
+/* Theme: Dark */
+body.theme-dark {
+    --body-bg: #121212; /* Very dark grey/black */
+    --text-color: #e0e0e0; /* Light grey text */
+    --primary-accent: #bb86fc; /* Purple */
+    --secondary-accent: #03dac6; /* Teal */
+    --container-bg: #1e1e1e; /* Dark container */
+    --container-border: #333333; /* Darker border */
+    --input-bg: #2c2c2c; /* Dark input */
+    --input-border: #444444; /* Darker input border */
+    --button-bg: linear-gradient(145deg, #bb86fc, #3700b3); /* Purple gradient */
+    --button-text: #000000; /* Black button text for contrast */
+    --button-shadow: rgba(187, 134, 252, 0.3);
+    --button-hover-shadow: rgba(187, 134, 252, 0.5);
+    --secondary-button-bg: #333333;
+    --secondary-button-text: #bb86fc;
+    --secondary-button-border: #444444;
+    --secondary-button-hover-bg: #444444;
+    --secondary-button-hover-text: #03dac6;
+    --secondary-button-hover-border: #555555;
+    --canvas-bg: #212121; /* Dark canvas */
+    --canvas-border: #303030; /* Darker canvas border */
+    --game-info-bg: #2c2c2c; /* Dark info panel */
+    --game-info-text: #e0e0e0; /* Light grey info text */
+    --score-color: #03dac6; /* Teal score */
+}
+
+/* Theme: Retro */
+body.theme-retro {
+    --body-bg: #fdf6e3; /* Creamy background (Solarized Light-ish) */
+    --text-color: #657b83; /* Dark grey-blue text */
+    --primary-accent: #d33682; /* Magenta */
+    --secondary-accent: #2aa198; /* Cyan */
+    --container-bg: #eee8d5; /* Lighter cream container */
+    --container-border: #93a1a1; /* Grey border */
+    --input-bg: #fdf6e3;
+    --input-border: #93a1a1;
+    --button-bg: linear-gradient(145deg, #cb4b16, #b58900); /* Orange/Brown gradient */
+    --button-text: #fdf6e3; /* Cream text */
+    --button-shadow: rgba(203, 75, 22, 0.3);
+    --button-hover-shadow: rgba(203, 75, 22, 0.5);
+    --secondary-button-bg: #586e75; /* Dark grey-blue */
+    --secondary-button-text: #fdf6e3;
+    --secondary-button-border: #586e75;
+    --secondary-button-hover-bg: #073642; /* Very dark blue */
+    --secondary-button-hover-text: #eee8d5;
+    --secondary-button-hover-border: #073642;
+    --canvas-bg: #002b36; /* Dark blue canvas (like old terminals) */
+    --canvas-border: #586e75; /* Grey-blue border */
+    --game-info-bg: #eee8d5;
+    --game-info-text: #657b83;
+    --score-color: #268bd2; /* Blue score */
+    --font-primary: 'VT323', monospace; /* Pixel font */
+    --font-secondary: 'Courier New', Courier, monospace;
+}
+
+/* Theme: Futuristic */
+body.theme-futuristic {
+    --body-bg: #0a0f1c; /* Deep space blue */
+    --text-color: #00ffea; /* Cyan text (Tron-like) */
+    --primary-accent: #ff00ff; /* Magenta */
+    --secondary-accent: #00f0ff; /* Bright cyan */
+    --container-bg: rgba(10, 25, 47, 0.8); /* Semi-transparent dark blue */
+    --container-border: #00ffea; /* Cyan border */
+    --input-bg: rgba(0, 0, 0, 0.5); /* Transparent black */
+    --input-border: #00ffea;
+    --button-bg: linear-gradient(145deg, #ff00ff, #8a008a); /* Magenta gradient */
+    --button-text: #00ffea;
+    --button-shadow: rgba(255, 0, 255, 0.4);
+    --button-hover-shadow: rgba(255, 0, 255, 0.6);
+    --secondary-button-bg: rgba(0, 0, 0, 0.6);
+    --secondary-button-text: #00ffea;
+    --secondary-button-border: #00f0ff;
+    --secondary-button-hover-bg: rgba(20, 40, 60, 0.8);
+    --secondary-button-hover-text: #ff00ff;
+    --secondary-button-hover-border: #ff00ff;
+    --canvas-bg: rgba(0, 0, 0, 0.7); /* Dark, slightly transparent canvas */
+    --canvas-border: #00f0ff; /* Bright cyan border */
+    --game-info-bg: rgba(10, 25, 47, 0.7);
+    --game-info-text: #00ffea;
+    --score-color: #ffff00; /* Yellow score */
+    --font-primary: 'Orbitron', sans-serif; /* Futuristic font */
+    --font-secondary: 'Rajdhani', sans-serif; /* Another futuristic/tech font */
+}
+
+/* Apply variables to existing styles */
+h1 {
+    font-family: var(--font-primary);
+    color: var(--primary-accent);
+    margin-bottom: 20px;
+    text-shadow: 0 0 5px var(--primary-accent), 0 0 10px var(--primary-accent);
+}
+
+.main-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    align-items: flex-start;
+    justify-content: center;
+    width: 100%;
+    max-width: 1200px;
+    display: none; /* Added to hide it initially */
+}
+
+.game-container {
+    display: flex;
+    gap: 20px;
+    background-color: var(--container-bg);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 0 25px rgba(78, 205, 196, 0.3); /* Consider theming this shadow color */
+    border: 2px solid var(--container-border);
+    transition: background-color 0.5s ease, border-color 0.5s ease;
+}
+
+#tetrisCanvas {
+    border: 2px solid var(--canvas-border);
+    background-color: var(--canvas-bg);
+    border-radius: 8px;
+    transition: background-color 0.5s ease, border-color 0.5s ease;
+}
+
+.game-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 180px;
+    padding: 15px;
+    background-color: var(--game-info-bg);
+    border-radius: 10px;
+    color: var(--game-info-text); /* Added for general text in game-info */
+    transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+.game-info h2 {
+    font-family: var(--font-primary);
+    margin-top: 0;
+    margin-bottom: 8px;
+    font-size: 0.9em;
+    color: var(--text-color); /* Use general text color or a specific one */
+    text-transform: uppercase;
+}
+
+.game-info p, .game-info div {
+    font-family: var(--font-primary);
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: var(--score-color); /* Specific for score/level numbers */
+}
+
+#nextPieceCanvas {
+    border: 1px solid var(--canvas-border);
+    background-color: var(--canvas-bg);
+    border-radius: 5px;
+    margin-top: 5px;
+    transition: background-color 0.5s ease, border-color 0.5s ease;
+}
+
+button {
+    font-family: var(--font-primary);
+    background: var(--button-bg);
+    color: var(--button-text);
+    border: none;
+    padding: 12px 20px;
+    margin-top: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.8em;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px var(--button-shadow);
+    text-transform: uppercase;
+}
+
+button:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px var(--button-hover-shadow);
+}
+
+button:active:not(:disabled) {
+    transform: translateY(0px);
+    box-shadow: 0 2px 5px var(--button-shadow); /* Use normal shadow for active */
+}
+
+button:disabled {
+    background: #555; /* Keep a generic disabled style or theme it */
+    color: #999;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+.game-message-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.75); /* This could be themed too */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    z-index: 100;
+    border-radius: 8px;
+    display: none;
+}
+
+.game-message-overlay h2 {
+    font-family: var(--font-primary);
+    font-size: 2em;
+    color: var(--primary-accent);
+    margin-bottom: 10px;
+    text-shadow: 0 0 8px var(--primary-accent);
+}
+
+.game-message-overlay p {
+    font-family: var(--font-secondary);
+    font-size: 1.2em;
+    color: var(--text-color); /* Use general text color */
+}
+
+.canvas-wrapper {
+    position: relative;
+}
+
+#initialScreen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    background-color: var(--container-bg);
+    border-radius: 15px;
+    box-shadow: 0 0 25px rgba(78, 205, 196, 0.3); /* Theme shadow? */
+    border: 2px solid var(--container-border);
+    width: 100%;
+    max-width: 500px;
+    box-sizing: border-box;
+    text-align: center;
+    transition: background-color 0.5s ease, border-color 0.5s ease;
+}
+
+#initialScreen h1 {
+    font-family: var(--font-primary);
+    color: var(--primary-accent);
+    margin-bottom: 10px; /* Reduced margin to make space for version */
+    text-shadow: 0 0 5px var(--primary-accent), 0 0 10px var(--primary-accent);
+}
+
+/* Style for version information */
+.version-info {
+    font-family: var(--font-secondary);
+    font-size: 0.8em;
+    color: var(--text-color);
+    margin-bottom: 20px; /* Space below version */
+    opacity: 0.7;
+}
+
+#initialScreen .settings-group {
+    margin-bottom: 20px;
+    width: 100%;
+    max-width: 350px;
+}
+
+#initialScreen label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--text-color); /* Use general text color, or a muted version */
+    font-size: 0.9em;
+    font-family: var(--font-secondary);
+}
+
+#initialScreen input[type="text"],
+#initialScreen input[type="number"] {
+    width: calc(100% - 22px);
+    padding: 10px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    border: 1px solid var(--input-border);
+    background-color: var(--input-bg);
+    color: var(--text-color);
+    font-family: var(--font-secondary);
+    font-size: 1em;
+    box-sizing: border-box;
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+#initialScreen .theme-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 5px;
+}
+
+#initialScreen .theme-btn {
+    font-family: var(--font-primary);
+    background: var(--secondary-button-bg);
+    color: var(--secondary-button-text);
+    border: 1px solid var(--secondary-button-border);
+    padding: 10px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.7em;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+}
+
+#initialScreen .theme-btn:hover {
+    background-color: var(--secondary-button-hover-bg);
+    color: var(--secondary-button-hover-text);
+    border-color: var(--secondary-button-hover-border);
+}
+
+#initialScreen .theme-btn.active {
+    background: var(--button-bg); /* Use primary button style for active theme */
+    color: var(--button-text);
+    border-color: var(--primary-accent); /* Or a specific active border */
+    box-shadow: 0 2px 8px var(--button-shadow);
+}
+
+#startGameFromInitialScreen,
+#disclaimerCreditsButton {
+    flex-grow: 1; /* Allows buttons to grow and share space equally */
+    /* Ensure consistent padding and font size for height calculation */
+    padding: 15px 20px; /* Adjusted padding for a balanced look, can be tuned */
+    font-size: 0.9em;   /* Adjusted font size for a balanced look, can be tuned */
+    text-align: center; /* Ensure text is centered */
+    /* Other styles like background, color, border are already applied via general button or specific ID styles */
+}
+
+#disclaimerCreditsButton {
+    background: var(--secondary-button-bg);
+    color: var(--secondary-button-text);
+    border: 1px solid var(--secondary-button-border);
+    /* font-size: 1em; */ /* Will take from the shared style above */
+    /* padding: 15px 30px; */ /* Will take from the shared style above */
+}
+
+#disclaimerCreditsButton:hover {
+    background-color: var(--secondary-button-hover-bg);
+    color: var(--secondary-button-hover-text);
+    border-color: var(--secondary-button-hover-border);
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.75); /* Theme this overlay? */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    z-index: 200;
+    display: none;
+}
+
+.modal-content {
+    background-color: var(--container-bg);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 0 30px rgba(78, 205, 196, 0.4); /* Theme shadow? */
+    border: 2px solid var(--container-border);
+    width: 90%;
+    max-width: 600px;
+    box-sizing: border-box;
+    color: var(--text-color);
+    transition: background-color 0.5s ease, border-color 0.5s ease, color 0.5s ease;
+}
+
+.modal-content h2 {
+    font-family: var(--font-primary);
+    color: var(--primary-accent);
+    margin-top: 0;
+    margin-bottom: 20px;
+    text-shadow: 0 0 5px var(--primary-accent), 0 0 10px var(--primary-accent);
+}
+
+.modal-content p {
+    font-family: var(--font-secondary);
+    font-size: 1em;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.modal-content button {
+    margin-top: 20px;
+    background: var(--secondary-button-bg);
+    color: var(--secondary-button-text);
+    border: 1px solid var(--secondary-button-border);
+}
+
+.modal-content button:hover {
+    background-color: var(--secondary-button-hover-bg);
+    color: var(--secondary-button-hover-text);
+    border-color: var(--secondary-button-hover-border);
+}
+
+.initial-screen-buttons {
+    display: flex;
+    align-items: stretch; /* Makes buttons in the flex container have the same height */
+    gap: 15px;
+    margin-top: 20px;
+}
+
+#disclaimerCreditsButton {
+    background: var(--secondary-button-bg);
+    color: var(--secondary-button-text);
+    border: 1px solid var(--secondary-button-border);
+    /* font-size: 1em; */ /* Will take from the shared style above */
+    /* padding: 15px 30px; */ /* Will take from the shared style above */
+}
+
+#disclaimerCreditsButton:hover {
+    background-color: var(--secondary-button-hover-bg);
+    color: var(--secondary-button-hover-text);
+    border-color: var(--secondary-button-hover-border);
+}
+
+
+@media (max-width: 768px) {
+    .main-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    .game-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    .game-info {
+        width: 100%;
+        max-width: 300px;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+    .game-info > div {
+        text-align: center;
+        margin-bottom: 10px;
+    }
+    .settings-panel {
+        max-width: none;
+        width: calc(100% - 40px);
+        margin-left: auto;
+        margin-right: auto;
+    }
+    h1 {
+        font-size: 1.8em;
+    }
+}
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.5em;
+    }
+    .game-info h2 {
+        font-size: 0.8em;
+    }
+    .game-info p, .game-info div {
+        font-size: 1em;
+    }
+    button {
+        padding: 10px 15px;
+        font-size: 0.7em;
+    }
+    .settings-panel h3 {
+        font-size: 1em;
+    }
+    .settings-panel label, .settings-panel input {
+        font-size: 0.9em;
+    }
+}

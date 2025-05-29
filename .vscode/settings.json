@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "undefined/subscriptions/fbea7c15-6cc8-4110-9ba5-f843b4b17598/resourceGroups/appsvc_windows_chilecentral_basic/providers/Microsoft.Web/sites/Tetris",
+    "appService.deploySubpath": "."
+}
